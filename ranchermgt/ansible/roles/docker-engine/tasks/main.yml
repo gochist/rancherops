@@ -1,0 +1,3 @@
+- name: wget https://apt.dockerproject.org/.../docker-engine.deb && dpkg -i docker-engine.deb
+  apt:
+    deb: https://apt.dockerproject.org/repo/pool/experimental/d/docker-engine/docker-engine_1.12.3-0~xenial_amd64.deb

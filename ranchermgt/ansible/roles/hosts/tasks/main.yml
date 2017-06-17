@@ -1,0 +1,6 @@
+- name: hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+- copy:
+    content: "{{ inventory_hosts_contents }}"
+    dest: /etc/hosts

@@ -1,0 +1,15 @@
+- name: apt install npm nodejs
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - nodejs
+    - npm
+- name: ln -s /usr/bin/nodejs /usr/bin/node
+  file:
+    src: /usr/bin/nodejs
+    dest: /usr/bin/node
+    state: link
+- name: npm install -g triton
+  npm:
+    name: triton
+    global: true

@@ -1,0 +1,60 @@
+{
+    "_meta": {
+        "hostvars": {
+            "localhost": {
+                "ansible_become": "true",
+                "ansible_connection": "local",
+                "ansible_python_interpreter": "/usr/bin/python3"
+            },
+            "ranchermgt1.stg.jpc": {
+                "ansible_become": "true",
+                "ansible_host": "72.2.119.164",
+                "ansible_host_internal_ip": "10.112.5.102",
+                "ansible_host_ips": [
+                    "72.2.119.164",
+                    "10.112.5.102"
+                ],
+                "ansible_host_names": "ntp-server,internal-registry",
+                "ansible_host_primary_ip": "72.2.119.164",
+                "ansible_inventory": "jpc-stg",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_server_groups": "rancher-db,rancher-server",
+                "ansible_user": "ubuntu"
+            },
+            "ranchermgt2.stg.jpc": {
+                "ansible_become": "true",
+                "ansible_host": "72.2.118.226",
+                "ansible_host_internal_ip": "10.112.1.128",
+                "ansible_host_ips": [
+                    "72.2.118.226",
+                    "10.112.1.128"
+                ],
+                "ansible_host_primary_ip": "72.2.118.226",
+                "ansible_inventory": "jpc-stg",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_server_groups": "rancher-db,rancher-server",
+                "ansible_user": "ubuntu"
+            }
+        }
+    },
+    "configure-mgt": [
+        "localhost"
+    ],
+    "rancher-db": [
+        "ranchermgt1.stg.jpc",
+        "ranchermgt2.stg.jpc"
+    ],
+    "rancher-mgt": {
+        "children": [
+            "rancher-db",
+            "rancher-server"
+        ],
+        "vars": {
+            "inventory_hosts_contents": "## This file is automatically generate by ansible playbook. Do not edit this manually.\n127.0.0.1 localhost\n\n10.112.1.128 ranchermgt2.stg.jpc.internal\n10.112.5.102 internal-registry.internal ntp-server.internal ranchermgt1.stg.jpc.internal\n72.2.118.226 ranchermgt2.stg.jpc\n72.2.119.164 internal-registry ntp-server ranchermgt1.stg.jpc"
+        }
+    },
+    "rancher-server": [
+        "ranchermgt1.stg.jpc",
+        "ranchermgt2.stg.jpc"
+    ]
+}

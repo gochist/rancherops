@@ -1,0 +1,17 @@
+- hosts: configure-mgt
+  roles:
+    - ansible
+    - terraform
+    - triton-cli
+
+- hosts: rancher-mgt
+  roles:
+    - hosts
+    - docker-engine
+
+- hosts: rancher-db
+  roles:
+
+- hosts: rancher-server
+  roles:
+
